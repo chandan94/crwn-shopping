@@ -7,13 +7,11 @@ import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInUpPage from './pages/sign-in-up/sign-in-up-page.component';
 
-import { auth, createUserProfileDoc } from './components/firebase/firebase-utils';
-// import store from './components/redux/store';
-import { setCurrentUser } from './components/redux/user/user.actions';
+import { auth, createUserProfileDoc } from './firebase/firebase-utils';
+
+import { setCurrentUser } from './redux/user/user.actions';
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-
-// import { Provider } from 'react-redux';
 
 import './App.css';
 
@@ -50,13 +48,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-
           <Router>
             <Header />
             <Switch>
               <Route exact path='/' component={HomePage} />
               <Route exact path='/shop' component={ShopPage} />
-              <Route exact path="/sign-in-up" render={ () => this.props.currentUser ? (<Redirect to='/'/>) : (<SignInUpPage />)} />
+              <Route exact path='/sign-in-up' render={ () => this.props.currentUser ? (<Redirect to='/'/>) : (<SignInUpPage />)} />
             </Switch>
           </Router>
       </div>
@@ -65,7 +62,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = ({ user }) => ({
-  currentUser : user.currentUser
+    currentUser : user.currentUser
 })
 
 const mapDispatchToProps = dispatch => ({
