@@ -7,15 +7,19 @@ import { toggleCartShow } from '../../redux/cart/cart.actions';
 
 import './cart.styles.scss'
 
-const Cart = ({ toggleCartShow }) => (
+const Cart = ({ toggleCartShow, itemCount }) => (
     <div className='cart' onClick={toggleCartShow}>
         <ShoppingBag className='shopping-bag' />
-        <span className='item-count'> 0 </span>
+        <span className='item-count'> {itemCount} </span>
     </div>
 )
+
+const mapStateToDrops = ({ cart : { cartItems }}) => ({
+    itemCount: cartItems.reduce((prevValue, cartItem) => prevValue + cartItem.quantity, 0)
+})
 
 const mapDispatchToProps = dispatch => ({
     toggleCartShow: () => dispatch(toggleCartShow())
 });
 
-export default connect (null, mapDispatchToProps)(Cart);
+export default connect (mapStateToDrops, mapDispatchToProps)(Cart);
