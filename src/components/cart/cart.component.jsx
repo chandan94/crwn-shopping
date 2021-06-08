@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { ReactComponent as ShoppingBag } from '../../assets/shopping-bag.svg';
 
 import { toggleCartShow } from '../../redux/cart/cart.actions';
-import { selectCartItemsTotal } from '../../redux/cart/cart.selector';
+import { selectCartItemsCount } from '../../redux/cart/cart.selector';
 
 import './cart.styles.scss'
 
@@ -16,7 +16,7 @@ const Cart = ({ toggleCartShow, itemCount }) => (
 )
 
 const mapStateToDrops = state => ({
-    itemCount: selectCartItemsTotal(state)
+    itemCount: selectCartItemsCount(state)
 })
 
 const mapDispatchToProps = dispatch => ({

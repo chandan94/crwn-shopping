@@ -17,12 +17,12 @@ import { selectCurrUser } from './redux/user/user.selector';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
+import Checkout from './pages/checkout/checkout.component';
 
 
 class App extends React.Component {
 
   unsubscribeFromAuth = null;
-
 
   componentDidMount() {
 
@@ -57,6 +57,7 @@ class App extends React.Component {
               <Route exact path='/' component={HomePage} />
               <Route exact path='/shop' component={ShopPage} />
               <Route exact path='/sign-in-up' render={ () => this.props.currentUser ? (<Redirect to='/'/>) : (<SignInUpPage />)} />
+              <Route exact path='/checkout' component={Checkout} />
             </Switch>
           </Router>
       </div>
