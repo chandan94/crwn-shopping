@@ -12,14 +12,17 @@
   z-index: 5;
 
   .cart-items {
-    height: 100%;
+    height: 82%;
     display: flex;
     flex-direction: column;
     overflow: auto;
   }
 
   button {
-    margin-top: auto;
+    position: absolute;
+    bottom: 1.2em;
+    left: 2em;
+    width: 78%;
   }
 
   .empty-message {
