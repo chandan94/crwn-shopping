@@ -37,7 +37,9 @@ const Checkout = ({ cartItems, cartTotal }) => (
         <div className='total'>
             TOTAL: ${cartTotal}
         </div>
-        <Stripe price={cartTotal} />
+        {
+            cartTotal > 0 ? <Stripe price={cartTotal} /> : null
+        }
     </div>
 )
 
