@@ -7,18 +7,21 @@ import CollectionItem from '../../components/collection-item/collection-item.com
 import './collection.styles.scss';
 
 
-const CollectionPage = ({ collection }) => (
-    <div className='collection-page'>
-        <h2 className='title'>{collection.title}</h2>
-        <div className='items'>
-            {
-                collection.items.map(item => {
-                    return <CollectionItem key={item.id} item={item} className='collection-item' />
-                })
-            }
+const CollectionPage = ({ collection }) => {
+    console.log(collection);
+    return (
+        <div className='collection-page'>
+            <h2 className='title'>{collection.title}</h2>
+            <div className='items'>
+                {
+                    collection.items.map(item => {
+                        return <CollectionItem key={item.id} item={item} className='collection-item' />
+                    })
+                }
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 const mapStateToProps = (state, otherProps) => ({
     collection: selectShopCollectionSet(otherProps.match.params.collectionId)(state)
